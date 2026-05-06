@@ -5,8 +5,8 @@ deployAs:
     applicationType: service
     endpoint: /
     scripts:
-      postDeploy: corepack enable && pnpm install --frozen-lockfile && pnpm --filter processor run connector:post-deploy
-      preUndeploy: corepack enable && pnpm install --frozen-lockfile && pnpm --filter processor run connector:pre-undeploy
+      postDeploy: npm install && npm run connector:post-deploy
+      preUndeploy: npm install && npm run connector:pre-undeploy
     configuration:
       standardConfiguration:
         - key: CTP_PROJECT_KEY
