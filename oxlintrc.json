@@ -1,0 +1,6 @@
+{
+  "plugins": ["typescript", "unicorn"],
+  "rules": {
+    "recommended": "error"
+  }
+}

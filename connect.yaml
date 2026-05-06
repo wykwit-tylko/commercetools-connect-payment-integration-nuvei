@@ -1,0 +1,68 @@
+deployAs:
+  - name: enabler
+    applicationType: assets
+  - name: processor
+    applicationType: service
+    endpoint: /
+    scripts:
+      postDeploy: corepack enable && pnpm install --frozen-lockfile && pnpm --filter processor run connector:post-deploy
+      preUndeploy: corepack enable && pnpm install --frozen-lockfile && pnpm --filter processor run connector:pre-undeploy
+    configuration:
+      standardConfiguration:
+        - key: CTP_PROJECT_KEY
+          description: commercetools project key
+          required: true
+        - key: CTP_AUTH_URL
+          description: commercetools Auth URL
+          required: true
+          default: https://auth.europe-west1.gcp.commercetools.com
+        - key: CTP_API_URL
+          description: commercetools API URL
+          required: true
+          default: https://api.europe-west1.gcp.commercetools.com
+        - key: CTP_SESSION_URL
+          description: Session API URL
+          required: true
+          default: https://session.europe-west1.gcp.commercetools.com
+        - key: CTP_JWKS_URL
+          description: JWKs url for JWT validation
+          required: true
+          default: https://mc-api.europe-west1.gcp.commercetools.com/.well-known/jwks.json
+        - key: CTP_JWT_ISSUER
+          description: JWT Issuer
+          required: true
+          default: https://mc-api.europe-west1.gcp.commercetools.com
+        - key: CTP_CHECKOUT_URL
+          description: Checkout API URL
+          required: true
+          default: https://checkout.europe-west1.gcp.commercetools.com
+        - key: NUVEI_ENV
+          description: Nuvei environment (test or production)
+          required: true
+          default: test
+        - key: NUVEI_MERCHANT_ID
+          description: Nuvei Merchant ID
+          required: true
+        - key: NUVEI_MERCHANT_SITE_ID
+          description: Nuvei Merchant Site ID
+          required: true
+        - key: NUVEI_API_BASE_URL
+          description: Nuvei API Base URL
+          required: true
+        - key: NUVEI_DMN_CHECKSUM_ALGORITHM
+          description: Nuvei DMN checksum algorithm (sha256 only)
+          required: false
+          default: sha256
+        - key: CORS_ALLOWED_ORIGINS
+          description: Comma-separated additional browser origins allowed to call the processor
+          required: false
+      securedConfiguration:
+        - key: CTP_CLIENT_ID
+          description: commercetools client ID with manage_payments, manage_orders, view_sessions, view_api_clients, manage_checkout_payment_intents & introspect_oauth_tokens scopes
+          required: true
+        - key: CTP_CLIENT_SECRET
+          description: commercetools client secret
+          required: true
+        - key: NUVEI_SECRET_KEY
+          description: Nuvei Secret Key
+          required: true
