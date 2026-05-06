@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "main": "public/nuvei-enabler.es.js",
+  "main": "public/connector-enabler.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
+    "start": "serve public -l 8080 --cors",
     "preview": "vite preview",
+    "serve": "npm run build && serve public -l 3000 --cors",
     "test": "vitest run"
+  },
+  "dependencies": {
+    "serve": "^14.2.6"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

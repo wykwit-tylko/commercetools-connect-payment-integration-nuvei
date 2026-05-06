@@ -8,7 +8,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/main.ts"),
       name: "NuveiEnabler",
-      fileName: (format) => `nuvei-enabler.${format}.js`,
+      fileName: (format) => `connector-enabler.${format}.js`,
       formats: ["es", "umd"],
     },
     rollupOptions: {

@@ -1,5 +1,3 @@
-node_modules
-dist
 build
-**/*.test.ts
-**/*.spec.ts
+dist
+node_modules
