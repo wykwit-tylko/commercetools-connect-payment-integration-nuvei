@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "main": "dist/index.js",
+  "main": "public/nuvei-enabler.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc && vite build",
